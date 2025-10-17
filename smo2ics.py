@@ -61,8 +61,17 @@ cal = Calendar()
 cal.add("prodid", "-//Schulmanager Scraper//DE")
 cal.add("version", "2.0")
 cal.add("X-WR-TIMEZONE", "Europe/Berlin")
+
+from datetime import timezone
+
+build_utc = datetime.now(timezone.utc)
+build_local = build_utc.astimezone(TZ)
+
 cal.add("X-WR-CALNAME", "Horststraße Schulkalender")
-cal.add("X-WR-CALDESC", "Öffentliche Termine der KGS Horststraße – automatisch generiert")
+cal.add("X-WR-CALDESC", f"Stand: {build_local:%Y-%m-%d %H:%M} {build_local.tzname()} (wöchentlich)")
+# optionaler Hinweis für Clients:
+cal.add("X-PUBLISHED-TTL", "P7D")   # 7 Tage
+
 
 today = date.today()
 for (win_start, win_end) in month_windows(today, MONTHS_PAST, MONTHS_AHEAD):
@@ -119,4 +128,5 @@ with open(OUTFILE, "wb") as f:
     f.write(cal.to_ical())
 
 print("Geschrieben:", OUTFILE)
+
 
