@@ -2,8 +2,8 @@ name: Build & Deploy ICS
 
 on:
   schedule:
-    - cron: '12 4 * * *'   # täglich 04:12 UTC (~06:12 Uhr in DE Sommerzeit)
-  workflow_dispatch: {}     # manuell startbar
+    - cron: '0 1 * * 6'   # Sa 01:00 UTC
+  workflow_dispatch: {}
 
 permissions:
   contents: read
