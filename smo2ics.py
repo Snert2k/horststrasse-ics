@@ -61,6 +61,8 @@ cal = Calendar()
 cal.add("prodid", "-//Schulmanager Scraper//DE")
 cal.add("version", "2.0")
 cal.add("X-WR-TIMEZONE", "Europe/Berlin")
+cal.add("X-WR-CALNAME", "Horststraße Schulkalender")
+cal.add("X-WR-CALDESC", "Öffentliche Termine der KGS Horststraße – automatisch generiert")
 
 today = date.today()
 for (win_start, win_end) in month_windows(today, MONTHS_PAST, MONTHS_AHEAD):
@@ -117,3 +119,4 @@ with open(OUTFILE, "wb") as f:
     f.write(cal.to_ical())
 
 print("Geschrieben:", OUTFILE)
+
