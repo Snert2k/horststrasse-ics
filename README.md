@@ -39,4 +39,4 @@ Ohne Gewähr. Wenn Termine im Schulkalender geändert werden, kann es je nach Ka
 ---
 
 ## Keepalive
-Last touch: 2025-12-13
+Last touch: 2026-04-14
